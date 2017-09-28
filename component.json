@@ -1,0 +1,16 @@
+{
+    "name": "advertisements-findone",
+    "description": "advertisements-findone component",
+    "local": [],
+    "scripts": ["index.js"],
+    "styles": ["styles.css"],
+    "templates": ["template.html"],
+    "main": "index.js",
+    "dependencies": {
+        "serandomps/dust": "master",
+        "serandomps/serand": "master",
+        "serandomps/utils": "master",
+        "serandomps/vehicles-service": "master",
+        "serandomps/gallery": "master"
+    }
+}
