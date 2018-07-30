@@ -9,21 +9,21 @@ var user;
 
 dust.loadSource(dust.compile(require('./template'), 'vehicles-findone'));
 
-module.exports = function (sandbox, fn, options) {
+module.exports = function (sandbox, options, done) {
     Vehicle.findOne({id: options.id, images: '800x450'}, function (err, vehicle) {
         if (err) {
-            return fn(true, serand.none);
+            return done(err);
         }
         dust.render('vehicles-findone', vehicle, function (err, out) {
-            sandbox.append(out);
-            if (!fn) {
-                return fn(true, serand.none);
+            if (err) {
+                return done(err);
             }
-            fn(false, {
+            sandbox.append(out);
+            done(null, {
                 clean: function () {
                     $('.vehicles-findone', sandbox).remove();
                 },
-                done: function () {
+                ready: function () {
                     var i;
                     var o = [];
                     var photos = vehicle.photos;
