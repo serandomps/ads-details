@@ -9,7 +9,7 @@ var user;
 
 dust.loadSource(dust.compile(require('./template'), 'vehicles-findone'));
 
-module.exports = function (sandbox, options, done) {
+module.exports = function (ctx, sandbox, options, done) {
     Vehicle.findOne({id: options.id, images: '800x450'}, function (err, vehicle) {
         if (err) {
             return done(err);
